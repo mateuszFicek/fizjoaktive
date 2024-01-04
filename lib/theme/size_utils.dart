@@ -1,6 +1,7 @@
 class Sizes {
   static FontSizes get fontSizes => FontSizes();
   static GapSizes get gapSizes => GapSizes();
+  static SpacingSizes get spacingSizes => SpacingSizes();
 }
 
 class FontSizes {
@@ -11,6 +12,12 @@ class FontSizes {
 }
 
 class GapSizes {
+  double get size4 => 4;
+  double get size8 => 8;
+  double get size16 => 16;
+}
+
+class SpacingSizes {
   double get size4 => 4;
   double get size8 => 8;
   double get size16 => 16;
