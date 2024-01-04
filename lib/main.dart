@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: getIt<AppNavigator>().router.config(),
-      title: 'Flutter Demo',
       theme: ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
     );
   }
