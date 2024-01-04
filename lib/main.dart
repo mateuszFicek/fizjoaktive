@@ -1,12 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:fizjoaktive/firebase_options.dart';
 import 'package:fizjoaktive/theme/app_colors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'core/injectable/injectable_config.dart';
 import 'core/navigator/app_router.dart';
 
-void main() {
+Future<void> main() async {
   configureDependencies();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  } catch (e) {
+    if (kDebugMode) {
+      print(e);
+    }
+  }
   runApp(const MyApp());
 }
 
@@ -18,11 +32,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: getIt<AppNavigator>().router.config(),
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: AppColors.primaryColor,
-            brightness: Brightness.light,
-          ),
-          textTheme: GoogleFonts.nunitoSansTextTheme()),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primaryColor,
+          brightness: Brightness.light,
+        ),
+        textTheme: GoogleFonts.nunitoSansTextTheme(),
+      ),
     );
   }
 }
