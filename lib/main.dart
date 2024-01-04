@@ -1,3 +1,4 @@
+import 'package:fizjoaktive/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,7 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: getIt<AppNavigator>().router.config(),
-      theme: ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.primaryColor,
+            brightness: Brightness.light,
+          ),
+          textTheme: GoogleFonts.nunitoSansTextTheme()),
     );
   }
 }
