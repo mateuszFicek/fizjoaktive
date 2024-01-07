@@ -6,4 +6,9 @@ class CustomTextTheme {
         fontSize: Sizes.fontSizes.largeFont,
         fontWeight: FontWeight.bold,
       );
+
+  static TextStyle get buttonTextStyle => TextStyle(
+        fontSize: Sizes.fontSizes.mediumFont,
+        fontWeight: FontWeight.w500,
+      );
 }

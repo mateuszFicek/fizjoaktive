@@ -15,6 +15,7 @@ class GapSizes {
   double get size4 => 4;
   double get size8 => 8;
   double get size16 => 16;
+  double get size64 => 64;
 }
 
 class SpacingSizes {

@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fizjoaktive/features/home.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../features/authentication/presentation/pages/login_page.dart';
+import '../../features/home_screen/presentation/pages/home_page.dart';
 
 part 'app_router.gr.dart';
 
 @AutoRouterConfig()
 class AppRouter extends _$AppRouter {
   AppRouter() {
-    push(const LoginRoute());
+    /// TODO: handle authenticated user -> navigate to login if not authenticated
   }
 
   @override
