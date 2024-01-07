@@ -22,4 +22,8 @@ class AppRouter extends _$AppRouter {
 @singleton
 class AppNavigator {
   AppRouter router = AppRouter();
+
+  Future<void> navigateHome() async {
+    router.replace(const HomeRoute());
+  }
 }

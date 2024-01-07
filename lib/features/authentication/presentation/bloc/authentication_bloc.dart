@@ -16,8 +16,13 @@ class AuthenticationBloc
 
   void _onPerformLogin(
       PerformLogin event, Emitter<AuthenticationState> emit) async {
+    emit(AuthenticationProcessing());
+
     final loginActionResult = await performLoginAction(
         LoginParams(email: event.email, password: event.password));
-    loginActionResult.fold((l) => print(l.errorMessage), (r) => print(r.user));
+    loginActionResult.fold(
+      (l) => emit(AuthenticationFailure(l.errorMessage)),
+      (r) => emit(AuthenticationSuccess()),
+    );
   }
 }
