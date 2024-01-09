@@ -7,4 +7,5 @@ class AppColors {
   static Color get black => Colors.black;
   static Color get white => Colors.white;
   static Color get offWhite => const Color(0xFFF1F2F6);
+  static Color get greyFont => const Color(0xFFABB4C4);
 }
