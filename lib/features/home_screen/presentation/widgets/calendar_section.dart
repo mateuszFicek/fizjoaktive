@@ -14,7 +14,7 @@ class CalendarSection extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(color: AppColors.offWhite),
       width: double.maxFinite,
-      height: MediaQuery.of(context).size.height / 2,
+      height: MediaQuery.of(context).size.height / 2 - 36,
       padding: EdgeInsets.all(Sizes.gapSizes.size16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,11 +25,20 @@ class CalendarSection extends StatelessWidget {
               color: AppColors.greyFont,
             ),
           ),
-          Text(
-            DateTime.now().monthAndYear,
-            style: CustomTextTheme.titleTextStyle.copyWith(
-              color: AppColors.black,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                DateTime.now().monthAndYear,
+                style: CustomTextTheme.titleTextStyle.copyWith(
+                  color: AppColors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.arrow_forward_ios),
+              )
+            ],
           ),
           Gap(Sizes.gapSizes.size16),
           const Divider(),
@@ -37,15 +46,6 @@ class CalendarSection extends StatelessWidget {
           Flexible(child: _calendarDates()),
           _calendarEvents(),
           Gap(Sizes.gapSizes.size16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.arrow_forward_ios),
-              )
-            ],
-          )
         ],
       ),
     );
@@ -117,27 +117,11 @@ class CalendarSection extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            "Milan",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: CustomTextTheme.header1BoldTextStyle,
-                          ),
-                        ),
-                        Text(DateTime.now().fullDateAndHour,
-                            style: CustomTextTheme.header3TextStyle),
-                      ],
-                    ),
+                    nameAndDate(),
                     Gap(Sizes.gapSizes.size4),
-                    Text("Opiekun: Agnieszka Majewska",
-                        style: CustomTextTheme.header2TextStyle),
+                    clientsInformation(),
                     Gap(Sizes.gapSizes.size4),
-                    Text("Opis: Wykonano zabieg na plecy oraz szyję.",
-                        style: CustomTextTheme.header2TextStyle)
+                    description()
                   ],
                 ),
               ),
@@ -149,5 +133,33 @@ class CalendarSection extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Row nameAndDate() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Text(
+            "Milan",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: CustomTextTheme.header1BoldTextStyle,
+          ),
+        ),
+        Text(DateTime.now().fullDateAndHour,
+            style: CustomTextTheme.header3TextStyle),
+      ],
+    );
+  }
+
+  Text clientsInformation() {
+    return Text("Opiekun: Agnieszka Majewska",
+        style: CustomTextTheme.header2TextStyle);
+  }
+
+  Text description() {
+    return Text("Opis: Wykonano zabieg na plecy oraz szyję.",
+        style: CustomTextTheme.header2TextStyle);
   }
 }
