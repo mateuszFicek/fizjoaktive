@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fizjoaktive/features/home_screen/presentation/widgets/calendar_section.dart';
+import 'package:fizjoaktive/features/home_screen/presentation/widgets/expandable_fab.dart';
 import 'package:fizjoaktive/features/home_screen/presentation/widgets/home_drawer.dart';
 import 'package:fizjoaktive/features/home_screen/presentation/widgets/recent_patients_section.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       drawer: const HomeDrawer(),
       body: _body(context),
+      floatingActionButton: const ExpandingFAB(),
     );
   }
 
