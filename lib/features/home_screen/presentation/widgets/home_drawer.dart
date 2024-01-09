@@ -72,6 +72,7 @@ class HomeDrawer extends StatelessWidget {
   }
 
   void onDrawerItemPressed(DrawerItem drawerItem) {
+    getIt<AppNavigator>().router.pop();
     if (drawerItem == DrawerItem.clients) {
       getIt<AppNavigator>().navigateToAllClients();
     }
