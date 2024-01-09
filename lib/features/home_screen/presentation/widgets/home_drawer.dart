@@ -1,3 +1,5 @@
+import 'package:fizjoaktive/core/injectable/injectable_config.dart';
+import 'package:fizjoaktive/core/navigator/app_router.dart';
 import 'package:fizjoaktive/features/home_screen/domain/enums/drawer_item.dart';
 import 'package:fizjoaktive/theme/size_utils.dart';
 import 'package:fizjoaktive/theme/text_theme.dart';
@@ -47,7 +49,7 @@ class HomeDrawer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () => onDrawerItemPressed(drawerItem),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -67,5 +69,11 @@ class HomeDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onDrawerItemPressed(DrawerItem drawerItem) {
+    if (drawerItem == DrawerItem.clients) {
+      getIt<AppNavigator>().navigateToAllClients();
+    }
   }
 }
