@@ -10,7 +10,7 @@ import 'package:gap/gap.dart';
 import '../../../../theme/text_theme.dart';
 import '../../../../widgets/custom_persistent_header_delegate.dart';
 import '../../../clients/domain/models/client.dart';
-import '../../domain/models/patient.dart';
+import '../../../patients/domain/models/patient.dart';
 import '../bloc/client_bloc.dart';
 
 @RoutePage()
@@ -36,7 +36,7 @@ class ClientPage extends StatelessWidget {
               padding: EdgeInsets.all(Sizes.spacingSizes.size16),
               child: CustomScrollView(
                 slivers: [
-                  _buildClientInfo(viewModel.patients.length),
+                  _buildClientInfo(viewModel.patients),
                   SliverToBoxAdapter(
                     child: SizedBox(height: Sizes.gapSizes.size16),
                   ),
@@ -52,7 +52,7 @@ class ClientPage extends StatelessWidget {
     );
   }
 
-  Widget _buildClientInfo(int patientsLength) {
+  Widget _buildClientInfo(List<Patient> patients) {
     return SliverList(
       delegate: SliverChildListDelegate(
         [
@@ -82,11 +82,11 @@ class ClientPage extends StatelessWidget {
                       style: CustomTextTheme.header2TextStyle,
                     ),
                     Text(
-                      "Liczba wizyt: 4",
+                      "Liczba wizyt: ${patients.fold(0, (previousValue, element) => previousValue += element.visits.length)}",
                       style: CustomTextTheme.header2TextStyle,
                     ),
                     Text(
-                      "Liczba pacjentów: $patientsLength",
+                      "Liczba pacjentów: ${patients.length}",
                       style: CustomTextTheme.header2TextStyle,
                     ),
                   ],

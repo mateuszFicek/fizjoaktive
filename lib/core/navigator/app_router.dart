@@ -7,6 +7,7 @@ import '../../features/client/presentation/pages/client_page.dart';
 import '../../features/clients/domain/models/client.dart';
 import '../../features/clients/presentation/pages/clients_page.dart';
 import '../../features/home_screen/presentation/pages/home_page.dart';
+import '../../features/patients/presentation/pages/patients_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -22,6 +23,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: ClientsRoute.page),
         AutoRoute(page: ClientRoute.page),
+        AutoRoute(page: PatientsRoute.page),
       ];
 }
 
@@ -34,5 +36,9 @@ class AppNavigator {
 
   Future<void> navigateToAllClients() async => router.push(ClientsRoute());
   Future<void> navigateToClientPage(Client client) async =>
+      router.push(ClientRoute(client: client));
+
+  Future<void> navigateToAllPatients() async => router.push(PatientsRoute());
+  Future<void> navigateToPatientPage(Client client) async =>
       router.push(ClientRoute(client: client));
 }

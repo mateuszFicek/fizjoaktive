@@ -1,4 +1,4 @@
-import 'package:fizjoaktive/features/client/domain/models/patient.dart';
+import 'package:fizjoaktive/features/patients/domain/models/patient.dart';
 
 class ClientDataViewModel {
   final List<Patient> patients;

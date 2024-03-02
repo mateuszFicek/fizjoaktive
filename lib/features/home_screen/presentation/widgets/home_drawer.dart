@@ -75,6 +75,8 @@ class HomeDrawer extends StatelessWidget {
     getIt<AppNavigator>().router.pop();
     if (drawerItem == DrawerItem.clients) {
       getIt<AppNavigator>().navigateToAllClients();
+    } else if (drawerItem == DrawerItem.patients) {
+      getIt<AppNavigator>().navigateToAllPatients();
     }
   }
 }

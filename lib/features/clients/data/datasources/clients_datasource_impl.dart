@@ -10,11 +10,14 @@ import '../../domain/models/client.dart';
 class ClientsDataSourceImpl implements ClientsDataSource {
   @override
   Future<List<Client>> getAllClients() async {
-    var db = FirebaseFirestore.instance;
+    var userID = FirebaseAuth.instance.currentUser?.uid;
+    var collection = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(userID)
+        .collection('clients')
+        .get();
 
-    final clients = await db.collection("clients").get();
-
-    return clients.docs
+    return collection.docs
         .map((e) => Client.fromFirestore(e.data(), e.id))
         .toList();
   }
