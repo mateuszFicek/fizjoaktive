@@ -7,6 +7,7 @@ class TextInput extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback? togglePasswordObscure;
   final VoidCallback? onEditingComplete;
+  final Function(String)? onChanged;
   final FocusNode? focusNode;
 
   const TextInput({
@@ -17,6 +18,7 @@ class TextInput extends StatelessWidget {
     this.obscureText,
     this.togglePasswordObscure,
     this.onEditingComplete,
+    this.onChanged,
     this.focusNode,
   });
 
@@ -28,6 +30,7 @@ class TextInput extends StatelessWidget {
       obscureText: obscureText ?? false,
       controller: controller,
       onEditingComplete: onEditingComplete,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: labelText,
         border: const OutlineInputBorder(),
