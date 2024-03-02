@@ -74,9 +74,14 @@ ios/GoogleService-Info.plist
 **/*.inject.dart
 **/*.inject.summary
 **/*.g.dart
+**/*.gr.dart
 **/*.config.dart
 **/*.gr.dart
 **/*.chopper.dart
+**/*.freezed.dart
+**/*.cached.dart
+
+
 flutter_export_environment.sh
 
 # Exceptions to above rules.

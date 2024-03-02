@@ -47,7 +47,9 @@ class ClientsListItem extends StatelessWidget {
               ],
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                getIt<ClientsBloc>().add(NavigateToClient(client));
+              },
               icon: const Icon(Icons.arrow_forward_ios),
             ),
           ],

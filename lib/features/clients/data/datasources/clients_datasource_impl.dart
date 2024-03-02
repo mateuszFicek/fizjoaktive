@@ -14,6 +14,8 @@ class ClientsDataSourceImpl implements ClientsDataSource {
 
     final clients = await db.collection("clients").get();
 
-    return clients.docs.map((e) => Client.fromFirestore(e.data())).toList();
+    return clients.docs
+        .map((e) => Client.fromFirestore(e.data(), e.id))
+        .toList();
   }
 }

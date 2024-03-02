@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fizjoaktive/core/injectable/injectable_config.dart';
 import 'package:fizjoaktive/core/utils/debouncer.dart';
+import 'package:fizjoaktive/features/client/presentation/bloc/client_bloc.dart';
 import 'package:fizjoaktive/features/clients/presentation/bloc/clients_bloc.dart';
 import 'package:fizjoaktive/features/clients/presentation/widgets/clients_list_item.dart';
 import 'package:fizjoaktive/theme/size_utils.dart';
@@ -37,7 +38,7 @@ class ClientsPage extends HookWidget {
           );
         },
         listener: (BuildContext context, ClientsState state) {
-          _onNavigateToClient(state);
+          _onNavigateToClient(state, searchController.text);
         },
       ),
     );
@@ -74,10 +75,12 @@ class ClientsPage extends HookWidget {
     );
   }
 
-  void _onNavigateToClient(ClientsState state) async {
+  Future<void> _onNavigateToClient(
+      ClientsState state, String searchQuery) async {
     if (state is! PushClientPage) return;
     try {
-      getIt<AppNavigator>().navigateToClientPage(state.client);
+      await getIt<AppNavigator>().navigateToClientPage(state.client);
+      getIt<ClientsBloc>().add(ClientSearch(searchQuery));
     } catch (e) {
       print(e);
     }
